@@ -1,0 +1,196 @@
+{
+	"info": {
+		"_postman_id": "c0613877-15ea-4033-a1b9-44becf63ec4f",
+		"name": "API Desa",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19062066"
+	},
+	"item": [
+		{
+			"name": "Get Detail Villages",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "code",
+							"value": "99999",
+							"type": "text"
+						},
+						{
+							"key": "district_code",
+							"value": "110101",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "konoha",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8000/api/desa/83816",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"desa",
+						"83816"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get List Desa",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/desa?page=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"desa"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create new Desa",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "code",
+							"value": "123314",
+							"type": "text"
+						},
+						{
+							"key": "district_code",
+							"value": "110101",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Test Desa Baru 3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8000/api/desa",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"desa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Desa",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"district_code\": 110101,\r\n    \"name\": \"Test Update Desa 4\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/desa/83816",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"desa",
+						"83816"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Desa",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/desa/83816",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"desa",
+						"83816"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

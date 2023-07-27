@@ -38,11 +38,14 @@ class DesaController extends Controller
         ]);   
 
         try {
-            DB::insert('insert into indonesia_villages (code, district_code, name) values (?, ?, ?)', [$data['code'], $data['district_code'], $data['name']]);
+            $id = DB::table('indonesia_villages')->insertGetId(["code" => $data['code'], "district_code" => $data['district_code'], "name" => $data['name']]);
 
-            return response()->json("ok", 200);
+            return response()->json([
+                "message" => "ok",
+                "id" => $id
+            ], 200);
         } catch (\Throwable $th) {
-            return response()->json($th->getMessage(), 400);
+            return response()->json(["message" => $th->getMessage()], $th->getCode());
         }
     }
 
@@ -74,11 +77,14 @@ class DesaController extends Controller
         ]);   
 
         try {
-            DB::update('update indonesia_villages set name = ?, district_code = ? where id = ?', $id, $data['district_code'], $data['name']);
+            DB::update('update indonesia_villages set name = ?, district_code = ? where id = ?', [$id, $data['district_code'], $data['name']]);
         
-            return response()->json("ok", 200);
+            return response()->json([
+                "message" => "ok",
+                "id" => $id
+            ], 200);
         } catch (\Throwable $th) {
-            return response()->json($th->getMessage(), 400);
+            return response()->json($th->getMessage(), $th->getCode());
         }
     }
 
@@ -88,7 +94,7 @@ class DesaController extends Controller
     public function destroy(string $id)
     {
         try {
-            DB::delete('delete indonesia_villages where id = ?', $id);  
+            DB::delete('delete from indonesia_villages where id = ?', [$id]);  
 
             return response()->json("ok", 200);
         } catch (\Throwable $th) {
